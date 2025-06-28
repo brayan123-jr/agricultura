@@ -8,7 +8,7 @@ import {
   Paper,
   useTheme,
 } from '@mui/material';
-import FarmIcon from '@mui/icons-material/Yard';
+import { Grass as GrassIcon } from '@mui/icons-material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PeopleIcon from '@mui/icons-material/People';
 import { useNavigate } from 'react-router-dom';
@@ -19,19 +19,19 @@ const Home: React.FC = () => {
 
   const features = [
     {
-      icon: <FarmIcon sx={{ fontSize: 40 }} />,
-      title: 'Productos Frescos del Campo',
-      description: 'Conectamos directamente con agricultores colombianos para traerte los mejores productos.',
+      icon: <GrassIcon sx={{ fontSize: 40 }} />,
+      title: 'Productos Agrícolas',
+      description: 'Encuentra una amplia variedad de productos agrícolas de calidad.',
     },
     {
       icon: <LocalShippingIcon sx={{ fontSize: 40 }} />,
-      title: 'Entrega Directa',
-      description: 'Envíos a todo el país, garantizando la frescura de los productos.',
+      title: 'Logística Integrada',
+      description: 'Gestión completa de la cadena de suministro y transporte.',
     },
     {
       icon: <PeopleIcon sx={{ fontSize: 40 }} />,
-      title: 'Apoyo al Agricultor',
-      description: 'Precios justos que benefician tanto al productor como al consumidor.',
+      title: 'Conexión Directa',
+      description: 'Conecta directamente con productores y compradores.',
     },
   ];
 
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
               textShadow: '2px 2px 4px rgba(0,0,0,0.2)',
             }}
           >
-            Del Campo Colombiano a Tu Mesa
+            AGRO-MARKET
           </Typography>
           <Typography
             variant="h5"
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
               textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
             }}
           >
-            Productos agrícolas frescos directamente de nuestros campesinos
+            Conectando productores artesanales con el mercado internacional
           </Typography>
           <Button
             variant="contained"
@@ -101,22 +101,47 @@ const Home: React.FC = () => {
                   '&:hover': {
                     transform: 'translateY(-4px)',
                   },
+                  backgroundImage: index === 0 
+                    ? 'url(https://images.unsplash.com/photo-1523741543316-beb7fc7023d8)'
+                    : index === 1
+                    ? 'url(https://images.unsplash.com/photo-1595246140625-573b715d11dc)'
+                    : 'url(https://images.unsplash.com/photo-1595475038784-bbe439ff41e6)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  position: 'relative',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    zIndex: 1,
+                  },
                 }}
               >
                 <Box
                   sx={{
-                    color: theme.palette.secondary.main,
-                    mb: 2,
+                    position: 'relative',
+                    zIndex: 2,
                   }}
                 >
-                  {feature.icon}
+                  <Box
+                    sx={{
+                      color: theme.palette.secondary.main,
+                      mb: 2,
+                    }}
+                  >
+                    {feature.icon}
+                  </Box>
+                  <Typography variant="h5" component="h3" gutterBottom>
+                    {feature.title}
+                  </Typography>
+                  <Typography color="text.secondary">
+                    {feature.description}
+                  </Typography>
                 </Box>
-                <Typography variant="h5" component="h3" gutterBottom>
-                  {feature.title}
-                </Typography>
-                <Typography color="text.secondary">
-                  {feature.description}
-                </Typography>
               </Paper>
             </Grid>
           ))}
@@ -155,7 +180,7 @@ const Home: React.FC = () => {
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="https://via.placeholder.com/600x400"
+                src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7"
                 alt="Agricultor colombiano"
                 sx={{
                   width: '100%',
